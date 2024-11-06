@@ -12,6 +12,7 @@ $offer = [
 ];
 
 
+
 $usual_price = $offer['canntidad'] * $offer['original_price'];
 $offer_price = $offer['canntidad'] * $offer['discount_price'];
 $saving = $usual_price - $offer_price;
@@ -29,7 +30,7 @@ $endDate = '31/12/2024';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mundo Nómada - Tienda de Ropa</title>
-
+    <link rel="stylesheet" href="./css/styles.css">
 </head>
 
 <body>
@@ -40,6 +41,8 @@ $endDate = '31/12/2024';
 
     <p>Descripción: <?= $offer['description'] ?></p>
 
+    
+
     <?php if ($stock_status): ?>
         <p>¡Ahorra $<?= $saving ?>!</p>
         <p>Compra <?= $offer['canntidad'] ?> <?= $offer['item'] ?> por solo $<?= $offer_price ?><br>
@@ -48,6 +51,8 @@ $endDate = '31/12/2024';
     <?php else: ?>
         <p>¡Lo sentimos, esta oferta está agotada!</p>
     <?php endif; ?>
+  
+    
 
 </body>
 
