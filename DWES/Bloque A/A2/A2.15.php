@@ -1,9 +1,7 @@
 <?php
 $name = 'Alex';
 
-if ($name) {
-    $saludo = 'Bienvenido de nuevo ' . $name;
-}
+$saludo = $name ? 'Hello ' . $name : 'Hello, guest';
 
 $memberShips = ['Basic' => 30, 'Premium' => 50, 'Gold' => 80];
 $tiempoEnMeses = 2;
@@ -69,7 +67,7 @@ switch ($tiempoEnMeses) {
             <tr>
                 <td><?= $membership ?></td>
                 <td><?= $price ?>€/month</td>
-                <td><?= ($tiempoEnMeses == 12) ? '50% off' : 'No discount' ?></td>
+                <td><?= $offer ?></td>
                 <td><?= $price * (1 - $discount) ?>€/month</td>
             </tr>
         <?php } ?>
