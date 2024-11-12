@@ -8,25 +8,28 @@ if ($name) {
 $memberShips = ['Basic' => 30, 'Premium' => 50, 'Gold' => 80];
 $tiempoEnMeses = 12;
 
-
 switch ($tiempoEnMeses) {
     case 1:
-        $offer = '10% off membership';
+        $offer = 'No discount';
+        $discount = 0.00;
         break;
     case 2:
         $offer = '20% off membership';
+        $discount = 0.20;
         break;
     case 3:
         $offer = '30% off membership';
+        $discount = 0.30;
         break;
     case 12:
         $offer = '50% off membership';
+        $discount = 0.50;
         break;
     default:
         $offer = 'No discount';
+        $discount = 0.00;
         break;
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,27 +50,25 @@ switch ($tiempoEnMeses) {
             echo $membership . ': ' . $price . '<br>';
         } ?></strong></p>
 
+    <p> <?= $name ?> sign on for <?= $tiempoEnMeses ?> Months </p>
+    <p>Discount is: <?= $offer ?></p>
 
-    <?php if ($tiempoEnMeses == 12) { ?>
-        <p> <?= $name ?> buy <?= $tiempoEnMeses ?> Months </p>
-        <p>Discount is: 50% off</p>
-    <?php } ?>
     <table border="1">
         <tr>
             <th>Membership</th>
             <th>Price</th>
             <th>Discount</th>
+            <th>Final Price</th>
         </tr>
         <?php foreach ($memberShips as $membership => $price) { ?>
             <tr>
                 <td><?= $membership ?></td>
-                <td><?= $price ?></td>
-                <td><?= ($tiempoEnMeses == 12) ? '50% off' : 'No discount' ?></td>
+                <td><?= $price ?>€/month</td>
+                <td><?= $offer ?></td>
+                <td><?= $price * (1 - $discount) ?>€/month</td>
             </tr>
         <?php } ?>
     </table>
-
-
 
     <?php include 'includes/footerGym.php' ?>
 </body>
