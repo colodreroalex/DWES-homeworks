@@ -6,7 +6,7 @@ if ($name) {
 }
 
 $memberShips = ['Basic' => 30, 'Premium' => 50, 'Gold' => 80];
-$tiempoEnMeses = 12;
+$tiempoEnMeses = 2;
 
 switch ($tiempoEnMeses) {
     case 1:
@@ -50,8 +50,13 @@ switch ($tiempoEnMeses) {
             echo $membership . ': ' . $price . '<br>';
         } ?></strong></p>
 
-    <p> <?= $name ?> sign on for <?= $tiempoEnMeses ?> Months </p>
-    <p>Discount is: <?= $offer ?></p>
+    <?php if ($tiempoEnMeses == 12) { ?>
+        <p> <?= $name ?> buy <?= $tiempoEnMeses ?> Months </p>
+        <p>Discount is: 50% off</p>
+    <?php } else { ?>
+        <p> <?= $name ?> sign on for <?= $tiempoEnMeses ?> Months </p>
+        <p>Discount is: <?= $offer ?></p>
+    <?php } ?>
 
     <table border="1">
         <tr>
@@ -64,7 +69,7 @@ switch ($tiempoEnMeses) {
             <tr>
                 <td><?= $membership ?></td>
                 <td><?= $price ?>€/month</td>
-                <td><?= $offer ?></td>
+                <td><?= ($tiempoEnMeses == 12) ? '50% off' : 'No discount' ?></td>
                 <td><?= $price * (1 - $discount) ?>€/month</td>
             </tr>
         <?php } ?>
