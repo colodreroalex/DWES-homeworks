@@ -4,12 +4,13 @@ $name = 'Alex';
 $saludo = $name ? 'Hello ' . $name : 'Hello, guest';
 
 $memberShips = ['Basic' => 30, 'Premium' => 50, 'Gold' => 80];
-$tiempoEnMeses = 2;
+$tiempoEnMeses = 3;
 
 switch ($tiempoEnMeses) {
     case 1:
         $offer = 'No discount';
         $discount = 0.00;
+          
         break;
     case 2:
         $offer = '20% off membership';
@@ -44,9 +45,13 @@ switch ($tiempoEnMeses) {
 
     <p> <?= $saludo ?></p>
     <p><strong>All memberships <br></strong></p>
-    <p><strong><?php foreach ($memberShips as $membership => $price) {
-            echo $membership . ': ' . $price . '<br>';
-        } ?></strong></p>
+    <p>
+        <strong>
+            <?php foreach ($memberShips as $membership => $price) {
+                echo $membership . ': ' . $price . '€/month' . '<br>';
+            } ?>
+        </strong>
+    </p>
 
     <?php if ($tiempoEnMeses == 12) { ?>
         <p> <?= $name ?> buy <?= $tiempoEnMeses ?> Months </p>
@@ -56,7 +61,7 @@ switch ($tiempoEnMeses) {
         <p>Discount is: <?= $offer ?></p>
     <?php } ?>
 
-    <table border="1">
+    <table>
         <tr>
             <th>Membership</th>
             <th>Price</th>
