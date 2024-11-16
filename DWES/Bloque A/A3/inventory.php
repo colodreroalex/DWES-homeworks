@@ -9,7 +9,7 @@ $books = [
     ['title' => 'The Great Gatsby',  'price' => 7, 'stock' => 15],
     ['title' => 'The Da Vinci Code', 'price' => 12, 'stock' => 7],
     ['title' => 'To Kill a Mockingbird', 'price' => 6, 'stock' => 3]
-    
+
 ];
 
 function get_total_stock(array $books): int
@@ -74,7 +74,8 @@ $total_tax = calculate_tax($total, $tax_rate);
             background-color: #ffffff;
         }
 
-        th, td {
+        th,
+        td {
             padding: 15px;
             text-align: left;
             border-bottom: 1px solid #dee2e6;
@@ -104,7 +105,8 @@ $total_tax = calculate_tax($total, $tax_rate);
                 width: 100%;
             }
 
-            th, td {
+            th,
+            td {
                 padding: 10px;
             }
         }
@@ -112,7 +114,6 @@ $total_tax = calculate_tax($total, $tax_rate);
 </head>
 
 <body>
-    <!-- HACER TABLA -->
     <h1>Books inventory</h1>
     <table>
         <tr>
@@ -127,9 +128,13 @@ $total_tax = calculate_tax($total, $tax_rate);
                 <td><?= $book['price'] ?>€</td>
                 <td><?= $book['stock'] ?> uds</td>
                 <td><?= get_inventory_value($book['price'], $book['stock']) ?>€</td>
-                
             </tr>
         <?php endforeach; ?>
+    </table>
+    <table>
+        <tr>
+            <th colspan="4">Inventory Summary</th>
+        </tr>
         <tr>
             <td colspan="3">Books</td>
             <td><?= get_total_stock($books) ?> uds</td>
@@ -142,11 +147,14 @@ $total_tax = calculate_tax($total, $tax_rate);
             <td colspan="3">Tax </td>
             <td> <?= $total_tax ?>€</td>
         </tr>
+
         <tr>
             <td colspan="3">Total with Tax</td>
             <td><?= $total_tax + $total ?>€</td>
         </tr>
     </table>
+
+
 </body>
 
 </html>
