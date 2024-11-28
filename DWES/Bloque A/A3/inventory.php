@@ -12,8 +12,7 @@ $books = [
 
 ];
 
-function get_total_stock(array $books): int
-{
+function get_total_stock(array $books): int{
     //Inicializamos la variable total
     $total = 0;
 
@@ -27,14 +26,12 @@ function get_total_stock(array $books): int
 }
 
 
-function get_inventory_value(float $precio, int $cantidad): float
-{
+function get_inventory_value(float $precio, int $cantidad): float{
     return $precio * $cantidad;
 }
 
 
-function calculate_tax(float $valor, float $tax_rate): float
-{
+function calculate_tax(float $valor, float $tax_rate): float{
     return $valor * $tax_rate;
 }
 

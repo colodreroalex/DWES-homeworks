@@ -1,5 +1,5 @@
 <?php
-$price    = '4';
+$price = '4';
 $quantity = 3;
 function calculate_total(int $price, int $quantity): int
 {

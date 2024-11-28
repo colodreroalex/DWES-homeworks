@@ -9,7 +9,7 @@ function calculate_running_total($price, $quantity)
     $total = $price * $quantity;
     $discount = $total * $discount;
     $tax   = $discount * $tax_rate;
-    $running_total = $running_total + $total + $tax;
+    $running_total += $total + $tax;
     return $running_total;
 }
 ?>
