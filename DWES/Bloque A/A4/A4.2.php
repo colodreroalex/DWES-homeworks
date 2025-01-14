@@ -1,5 +1,6 @@
 <?php
 include 'Product.php';
+
 $producto = new Product(1,"Producto 1");
 $producto2 = new Product(2, "Producto 2");
 
