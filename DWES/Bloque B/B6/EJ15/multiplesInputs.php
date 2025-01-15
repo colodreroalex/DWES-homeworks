@@ -1,35 +1,27 @@
 <?php
-// Inicializamos las variables
-$form = [
-    'email' => '',
-    'age' => '',
-    'url' => '',
-    'terms' => false
-];
+// Inicializamos las variables QUE SE VAN A MOSTRAR POR DEFECTO
+$form['email'] = ''; 
+$form['age'] = ''; 
+$form['url'] = '';
+$form['terms'] = '';  
+
 
 $data = []; // Resultado de los datos validados
 $errors = []; // Array para almacenar errores
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Configuramos los filtros de validación
-    $filters = [
-        'email' => FILTER_VALIDATE_EMAIL, // Validar email
-        'age' => [
-            'filter' => FILTER_VALIDATE_INT,
-            'options' => [
-                'min_range' => 18,
-                'max_range' => 65
-            ]
-        ], // Validar edad entre 18 y 65
-        'url' => FILTER_VALIDATE_URL, // Validar URL
-        'terms' => [
-            'filter' => FILTER_VALIDATE_BOOLEAN,
-            'flags' => FILTER_NULL_ON_FAILURE
-        ] // Validar checkbox como booleano
-    ];
+
+    $filters['email'] = FILTER_VALIDATE_EMAIL;
+    $filters['age']['filter'] = FILTER_VALIDATE_INT;
+    $filters['age']['options']['min_range'] = 16; 
+    $filters['age']['options']['max_range'] = 65;
+    $filters['url'] = FILTER_VALIDATE_URL;
+    $filters['terms']['filter'] = FILTER_VALIDATE_BOOLEAN; 
+    $filters['terms']['flags'] = FILTER_NULL_ON_FAILURE; 
+
 
     // Obtener los valores enviados mediante POST
-    $form = filter_input_array(INPUT_POST);
+    $form = filter_input_array(INPUT_POST, $filters);
 
     // Validar los datos con los filtros
     $data = filter_var_array($form, $filters);
@@ -61,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <h1>Validación de Formulario</h1>
     <form action="" method="POST">
         <label for="email">Email:</label>
-        <input type="text" name="email" value="<?= htmlspecialchars($form['email'] ?? '') ?>"><br><br>
+        <input type="text" name="email" value="<?= htmlspecialchars($form['email'] ?? '') ?> "><br><br>
 
         <label for="age">Edad:</label>
         <input type="text" name="age" value="<?= htmlspecialchars($form['age'] ?? '') ?>"><br><br>
